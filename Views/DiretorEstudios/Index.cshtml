@@ -1,0 +1,36 @@
+@model IEnumerable<CineAnimeWeb.Models.DiretorEstudio>
+
+@{
+    ViewData["Title"] = "Diretores e Estudios";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Diretores e Estudios</h1>
+    <a class="btn btn-primary" asp-action="Create">Cadastrar</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Pais</th>
+            <th>Obras</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.Pais</td>
+            <td>@item.Obras.Count</td>
+            <td class="text-end">
+                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

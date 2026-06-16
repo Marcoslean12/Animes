@@ -1,0 +1,89 @@
+@model CineAnimeWeb.ViewModels.ConsultasIndexViewModel
+
+@{
+    ViewData["Title"] = "Consultas LINQ";
+}
+
+<h1>Consultas LINQ</h1>
+
+<section class="mb-5">
+    <h2 class="h4">1. Obras com diretor ou estudio</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Tipo</th>
+                <th>Ano</th>
+                <th>Diretor/Estudio</th>
+                <th>Pais</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.ObrasComDiretores)
+        {
+            <tr>
+                <td>@item.Titulo</td>
+                <td>@item.Tipo</td>
+                <td>@item.AnoLancamento</td>
+                <td>@item.NomeDiretorEstudio</td>
+                <td>@item.PaisDiretorEstudio</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>
+
+<section class="mb-5">
+    <h2 class="h4">2. Agrupamento por tipo</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Quantidade de obras</th>
+                <th>Media das notas</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.ObrasPorTipo)
+        {
+            <tr>
+                <td>@item.Tipo</td>
+                <td>@item.QuantidadeObras</td>
+                <td>@item.MediaNotas.ToString("0.0")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>
+
+<section class="mb-5">
+    <div class="d-flex justify-content-between align-items-end gap-3 flex-wrap">
+        <h2 class="h4 mb-0">3. Where principal e filtro de grupo tipo Having</h2>
+        <form method="get" class="d-flex gap-2 align-items-end">
+            <div>
+                <label for="anoFiltro" class="form-label">Ano minimo</label>
+                <input id="anoFiltro" name="anoFiltro" class="form-control" type="number" value="@Model.AnoFiltro" />
+            </div>
+            <button class="btn btn-primary" type="submit">Filtrar</button>
+        </form>
+    </div>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Diretor/Estudio</th>
+                <th>Quantidade de obras</th>
+                <th>Media das avaliacoes</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.DiretoresComMaisDeUmaObra)
+        {
+            <tr>
+                <td>@item.NomeDiretorEstudio</td>
+                <td>@item.QuantidadeObras</td>
+                <td>@item.MediaAvaliacoes.ToString("0.0")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>

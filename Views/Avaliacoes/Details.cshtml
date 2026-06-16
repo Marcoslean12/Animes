@@ -1,0 +1,23 @@
+@model CineAnimeWeb.Models.Avaliacao
+
+@{
+    ViewData["Title"] = "Detalhes da avaliacao";
+}
+
+<h1>Detalhes da avaliacao</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Obra</dt>
+    <dd class="col-sm-9">@Model.Obra?.Titulo</dd>
+    <dt class="col-sm-3">Usuario</dt>
+    <dd class="col-sm-9">@Model.NomeUsuario</dd>
+    <dt class="col-sm-3">Nota</dt>
+    <dd class="col-sm-9">@Model.Nota.ToString("0.0")</dd>
+    <dt class="col-sm-3">Comentario</dt>
+    <dd class="col-sm-9">@Model.Comentario</dd>
+    <dt class="col-sm-3">Data</dt>
+    <dd class="col-sm-9">@Model.DataAvaliacao.ToShortDateString()</dd>
+</dl>
+
+<a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+<a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>

@@ -1,0 +1,40 @@
+@model IEnumerable<CineAnimeWeb.Models.Avaliacao>
+
+@{
+    ViewData["Title"] = "Avaliacoes";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Avaliacoes</h1>
+    <a class="btn btn-primary" asp-action="Create">Cadastrar avaliacao</a>
+</div>
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Obra</th>
+            <th>Usuario</th>
+            <th>Nota</th>
+            <th>Comentario</th>
+            <th>Data</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.Obra?.Titulo</td>
+            <td>@item.NomeUsuario</td>
+            <td>@item.Nota.ToString("0.0")</td>
+            <td>@item.Comentario</td>
+            <td>@item.DataAvaliacao.ToShortDateString()</td>
+            <td class="text-end">
+                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,16 @@
+@model CineAnimeWeb.Models.Genero
+
+@{
+    ViewData["Title"] = "Excluir genero";
+}
+
+<h1>Excluir genero</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<p>Confirma a exclusao de <strong>@Model.Nome</strong>?</p>
+<p>Obras relacionadas: @Model.ObraGeneros.Count</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+</form>

@@ -1,0 +1,42 @@
+@model IEnumerable<CineAnimeWeb.Models.Obra>
+
+@{
+    ViewData["Title"] = "Obras";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Obras</h1>
+    <a class="btn btn-primary" asp-action="Create">Cadastrar obra</a>
+</div>
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Tipo</th>
+            <th>Ano</th>
+            <th>Diretor/Estudio</th>
+            <th>Generos</th>
+            <th>Media</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.Titulo</td>
+            <td>@item.Tipo</td>
+            <td>@item.AnoLancamento</td>
+            <td>@item.DiretorEstudio?.Nome</td>
+            <td>@string.Join(", ", item.ObraGeneros.Select(og => og.Genero?.Nome))</td>
+            <td>@(item.Avaliacoes.Any() ? item.Avaliacoes.Average(a => a.Nota).ToString("0.0") : "-")</td>
+            <td class="text-end">
+                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

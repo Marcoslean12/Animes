@@ -1,0 +1,14 @@
+@model CineAnimeWeb.Models.Avaliacao
+
+@{
+    ViewData["Title"] = "Excluir avaliacao";
+}
+
+<h1>Excluir avaliacao</h1>
+<p>Confirma a exclusao da avaliacao de <strong>@Model.NomeUsuario</strong> para <strong>@Model.Obra?.Titulo</strong>?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+</form>

@@ -1,0 +1,16 @@
+@model CineAnimeWeb.Models.DiretorEstudio
+
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<h1>Excluir diretor/estudio</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<p>Confirma a exclusao de <strong>@Model.Nome</strong>?</p>
+<p>Obras vinculadas: @Model.Obras.Count</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+</form>

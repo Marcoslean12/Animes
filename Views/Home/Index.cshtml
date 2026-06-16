@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="p-4 p-md-5 mb-4 bg-light rounded-3">
+    <h1 class="display-5 fw-semibold">CineAnimeWeb</h1>
+    <p class="lead mb-4">Sistema web em ASP.NET Core MVC para cadastrar filmes, animes, generos, diretores/estudios e avaliacoes com persistencia em SQL Server.</p>
+    <div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-primary" asp-controller="Obras" asp-action="Index">Ver obras</a>
+        <a class="btn btn-outline-primary" asp-controller="Consultas" asp-action="Index">Consultas</a>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="border rounded p-3 h-100">
+            <h2 class="h5">CRUDs</h2>
+            <p class="mb-0">Telas para obras, diretores/estudios, generos e avaliacoes.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="border rounded p-3 h-100">
+            <h2 class="h5">Relacionamentos</h2>
+            <p class="mb-0">Uma obra pertence a um diretor/estudio, possui avaliacoes e pode ter varios generos.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="border rounded p-3 h-100">
+            <h2 class="h5">Consultas</h2>
+            <p class="mb-0">Pagina dedicada a consultas LINQ com Include, GroupBy, Count, Average e filtro tipo Having.</p>
+        </div>
+    </div>
+</div>

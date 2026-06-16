@@ -1,0 +1,18 @@
+@model CineAnimeWeb.Models.DiretorEstudio
+
+@{
+    ViewData["Title"] = "Editar diretor/estudio";
+}
+
+<h1>Editar diretor/estudio</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <partial name="_Form" model="Model" />
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

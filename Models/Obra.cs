@@ -1,0 +1,37 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace CineAnimeWeb.Models;
+
+public class Obra
+{
+    public int Id { get; set; }
+
+    [Required(ErrorMessage = "Informe o titulo.")]
+    [StringLength(150)]
+    public string Titulo { get; set; } = string.Empty;
+
+    [Required]
+    public TipoObra Tipo { get; set; }
+
+    [Display(Name = "Ano de Lancamento")]
+    [Range(1900, 2100, ErrorMessage = "Informe um ano valido.")]
+    public int AnoLancamento { get; set; }
+
+    [Display(Name = "Duracao em minutos")]
+    [Range(1, 1000, ErrorMessage = "Informe uma duracao valida.")]
+    public int DuracaoMinutos { get; set; }
+
+    [Required(ErrorMessage = "Informe a sinopse.")]
+    [StringLength(1000)]
+    public string Sinopse { get; set; } = string.Empty;
+
+    [Display(Name = "Diretor/Estudio")]
+    [Required(ErrorMessage = "Selecione um diretor ou estudio.")]
+    public int DiretorEstudioId { get; set; }
+
+    [Display(Name = "Diretor/Estudio")]
+    public DiretorEstudio? DiretorEstudio { get; set; }
+
+    public ICollection<Avaliacao> Avaliacoes { get; set; } = new List<Avaliacao>();
+    public ICollection<ObraGenero> ObraGeneros { get; set; } = new List<ObraGenero>();
+}

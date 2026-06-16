@@ -1,0 +1,41 @@
+@model CineAnimeWeb.ViewModels.ObraFormViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="col-md-6">
+    <label asp-for="Titulo" class="form-label"></label>
+    <input asp-for="Titulo" class="form-control" />
+    <span asp-validation-for="Titulo" class="text-danger"></span>
+</div>
+<div class="col-md-3">
+    <label asp-for="Tipo" class="form-label"></label>
+    <select asp-for="Tipo" class="form-select" asp-items="Html.GetEnumSelectList<CineAnimeWeb.Models.TipoObra>()"></select>
+    <span asp-validation-for="Tipo" class="text-danger"></span>
+</div>
+<div class="col-md-3">
+    <label asp-for="AnoLancamento" class="form-label"></label>
+    <input asp-for="AnoLancamento" class="form-control" />
+    <span asp-validation-for="AnoLancamento" class="text-danger"></span>
+</div>
+<div class="col-md-4">
+    <label asp-for="DuracaoMinutos" class="form-label"></label>
+    <input asp-for="DuracaoMinutos" class="form-control" />
+    <span asp-validation-for="DuracaoMinutos" class="text-danger"></span>
+</div>
+<div class="col-md-4">
+    <label asp-for="DiretorEstudioId" class="form-label"></label>
+    <select asp-for="DiretorEstudioId" class="form-select" asp-items="Model.DiretoresEstudios">
+        <option value="">Selecione</option>
+    </select>
+    <span asp-validation-for="DiretorEstudioId" class="text-danger"></span>
+</div>
+<div class="col-md-4">
+    <label asp-for="GenerosSelecionados" class="form-label"></label>
+    <select asp-for="GenerosSelecionados" class="form-select" asp-items="Model.Generos" multiple size="6"></select>
+    <span asp-validation-for="GenerosSelecionados" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="Sinopse" class="form-label"></label>
+    <textarea asp-for="Sinopse" class="form-control" rows="4"></textarea>
+    <span asp-validation-for="Sinopse" class="text-danger"></span>
+</div>

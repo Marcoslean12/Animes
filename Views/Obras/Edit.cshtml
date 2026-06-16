@@ -1,0 +1,20 @@
+@model CineAnimeWeb.ViewModels.ObraFormViewModel
+
+@{
+    ViewData["Title"] = "Editar obra";
+}
+
+<h1>Editar obra</h1>
+
+<form asp-action="Edit" method="post" class="row g-3">
+    <input type="hidden" asp-for="Id" />
+    <partial name="_Form" model="Model" />
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

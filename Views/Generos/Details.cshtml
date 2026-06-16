@@ -1,0 +1,24 @@
+@model CineAnimeWeb.Models.Genero
+
+@{
+    ViewData["Title"] = "Detalhes do genero";
+}
+
+<h1>@Model.Nome</h1>
+<h2 class="h4">Obras com este genero</h2>
+@if (Model.ObraGeneros.Any())
+{
+    <ul>
+    @foreach (var obraGenero in Model.ObraGeneros.OrderBy(og => og.Obra!.Titulo))
+    {
+        <li><a asp-controller="Obras" asp-action="Details" asp-route-id="@obraGenero.ObraId">@obraGenero.Obra?.Titulo</a></li>
+    }
+    </ul>
+}
+else
+{
+    <p>Nenhuma obra relacionada.</p>
+}
+
+<a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+<a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>

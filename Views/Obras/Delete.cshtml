@@ -1,0 +1,21 @@
+@model CineAnimeWeb.Models.Obra
+
+@{
+    ViewData["Title"] = "Excluir obra";
+}
+
+<h1>Excluir obra</h1>
+<p>Confirma a exclusao de <strong>@Model.Titulo</strong>?</p>
+
+<dl class="row">
+    <dt class="col-sm-3">Tipo</dt>
+    <dd class="col-sm-9">@Model.Tipo</dd>
+    <dt class="col-sm-3">Diretor/Estudio</dt>
+    <dd class="col-sm-9">@Model.DiretorEstudio?.Nome</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+</form>

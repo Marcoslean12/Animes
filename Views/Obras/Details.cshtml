@@ -1,0 +1,60 @@
+@model CineAnimeWeb.Models.Obra
+
+@{
+    ViewData["Title"] = "Detalhes da obra";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>@Model.Titulo</h1>
+    <a class="btn btn-primary" asp-controller="Avaliacoes" asp-action="Create" asp-route-obraId="@Model.Id">Avaliar obra</a>
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Tipo</dt>
+    <dd class="col-sm-9">@Model.Tipo</dd>
+    <dt class="col-sm-3">Ano de lancamento</dt>
+    <dd class="col-sm-9">@Model.AnoLancamento</dd>
+    <dt class="col-sm-3">Duracao</dt>
+    <dd class="col-sm-9">@Model.DuracaoMinutos minutos</dd>
+    <dt class="col-sm-3">Diretor/Estudio</dt>
+    <dd class="col-sm-9">@Model.DiretorEstudio?.Nome (@Model.DiretorEstudio?.Pais)</dd>
+    <dt class="col-sm-3">Generos</dt>
+    <dd class="col-sm-9">@string.Join(", ", Model.ObraGeneros.Select(og => og.Genero?.Nome))</dd>
+    <dt class="col-sm-3">Sinopse</dt>
+    <dd class="col-sm-9">@Model.Sinopse</dd>
+</dl>
+
+<h2 class="h4 mt-4">Avaliacoes</h2>
+@if (Model.Avaliacoes.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Nota</th>
+                <th>Comentario</th>
+                <th>Data</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var avaliacao in Model.Avaliacoes.OrderByDescending(a => a.DataAvaliacao))
+        {
+            <tr>
+                <td>@avaliacao.NomeUsuario</td>
+                <td>@avaliacao.Nota.ToString("0.0")</td>
+                <td>@avaliacao.Comentario</td>
+                <td>@avaliacao.DataAvaliacao.ToShortDateString()</td>
+                <td><a class="btn btn-sm btn-outline-danger" asp-controller="Avaliacoes" asp-action="Delete" asp-route-id="@avaliacao.Id">Excluir</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhuma avaliacao cadastrada.</p>
+}
+
+<a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+<a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>

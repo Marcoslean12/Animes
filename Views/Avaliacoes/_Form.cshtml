@@ -1,0 +1,31 @@
+@model CineAnimeWeb.Models.Avaliacao
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="col-md-6">
+    <label asp-for="ObraId" class="form-label"></label>
+    <select asp-for="ObraId" class="form-select" asp-items="ViewBag.ObraId">
+        <option value="">Selecione</option>
+    </select>
+    <span asp-validation-for="ObraId" class="text-danger"></span>
+</div>
+<div class="col-md-6">
+    <label asp-for="NomeUsuario" class="form-label"></label>
+    <input asp-for="NomeUsuario" class="form-control" />
+    <span asp-validation-for="NomeUsuario" class="text-danger"></span>
+</div>
+<div class="col-md-3">
+    <label asp-for="Nota" class="form-label"></label>
+    <input asp-for="Nota" class="form-control" step="0.1" />
+    <span asp-validation-for="Nota" class="text-danger"></span>
+</div>
+<div class="col-md-3">
+    <label asp-for="DataAvaliacao" class="form-label"></label>
+    <input asp-for="DataAvaliacao" class="form-control" />
+    <span asp-validation-for="DataAvaliacao" class="text-danger"></span>
+</div>
+<div class="col-12">
+    <label asp-for="Comentario" class="form-label"></label>
+    <textarea asp-for="Comentario" class="form-control" rows="3"></textarea>
+    <span asp-validation-for="Comentario" class="text-danger"></span>
+</div>
