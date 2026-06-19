@@ -1,20 +1,57 @@
 @model CineAnimeWeb.ViewModels.ObraFormViewModel
 
 @{
-    ViewData["Title"] = "Editar obra";
+    ViewData["Title"] = "Editar Obra";
 }
 
-<h1>Editar obra</h1>
+<div class="card shadow border-0">
 
-<form asp-action="Edit" method="post" class="row g-3">
-    <input type="hidden" asp-for="Id" />
-    <partial name="_Form" model="Model" />
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
+    <div class="card-header bg-warning">
+        <h3 class="mb-0 text-dark">
+            ✏️ Editar Obra
+        </h3>
+        <small class="text-dark">
+            Atualize as informações da obra selecionada.
+        </small>
     </div>
-</form>
+
+    <div class="card-body">
+
+        <form asp-action="Edit" method="post" class="row g-3">
+
+            <input type="hidden" asp-for="Id" />
+
+            <partial name="_Form" model="Model" />
+
+            <div class="col-12 border-top pt-3 mt-3">
+
+                <div class="d-flex gap-2">
+
+                    <button type="submit" class="btn btn-success">
+                        💾 Salvar Alterações
+                    </button>
+
+                    <a class="btn btn-secondary" asp-action="Index">
+                        ↩️ Voltar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="card-footer text-muted text-center">
+        CineAnimeWeb • Edição de Obras
+    </div>
+
+</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 }

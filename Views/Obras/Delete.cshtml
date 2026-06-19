@@ -1,21 +1,96 @@
 @model CineAnimeWeb.Models.Obra
 
 @{
-    ViewData["Title"] = "Excluir obra";
+    ViewData["Title"] = "Excluir Obra";
 }
 
-<h1>Excluir obra</h1>
-<p>Confirma a exclusao de <strong>@Model.Titulo</strong>?</p>
+<div class="card shadow border-danger">
 
-<dl class="row">
-    <dt class="col-sm-3">Tipo</dt>
-    <dd class="col-sm-9">@Model.Tipo</dd>
-    <dt class="col-sm-3">Diretor/Estudio</dt>
-    <dd class="col-sm-9">@Model.DiretorEstudio?.Nome</dd>
-</dl>
+    <div class="card-header bg-danger text-white">
+        <h3 class="mb-0">🗑️ Excluir Obra</h3>
+        <small>Atenção! Esta ação não poderá ser desfeita.</small>
+    </div>
 
-<form asp-action="Delete" method="post">
-    <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Excluir</button>
-    <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
-</form>
+    <div class="card-body">
+
+        <div class="alert alert-warning">
+            <h5 class="alert-heading">
+                ⚠️ Confirmação de Exclusão
+            </h5>
+
+            <p class="mb-0">
+                Você está prestes a excluir a obra
+                <strong>"@Model.Titulo"</strong>.
+            </p>
+        </div>
+
+        <div class="card bg-light border-0">
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    📋 Dados da Obra
+                </h5>
+
+                <hr />
+
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <strong>🎬 Título</strong>
+                    </div>
+                    <div class="col-md-9">
+                        @Model.Titulo
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <strong>📺 Tipo</strong>
+                    </div>
+                    <div class="col-md-9">
+                        <span class="badge bg-info text-dark">
+                            @Model.Tipo
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <strong>🎥 Diretor/Estúdio</strong>
+                    </div>
+                    <div class="col-md-9">
+                        @Model.DiretorEstudio?.Nome
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card-footer">
+
+        <form asp-action="Delete" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="d-flex justify-content-end gap-2">
+
+                <a class="btn btn-secondary"
+                   asp-action="Index">
+                    ↩️ Cancelar
+                </a>
+
+                <button type="submit"
+                        class="btn btn-danger">
+                    🗑️ Confirmar Exclusão
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

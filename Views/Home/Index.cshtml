@@ -1,33 +1,144 @@
 @{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Início";
 }
 
-<div class="p-4 p-md-5 mb-4 bg-light rounded-3">
-    <h1 class="display-5 fw-semibold">CineAnimeWeb</h1>
-    <p class="lead mb-4">Sistema web em ASP.NET Core MVC para cadastrar filmes, animes, generos, diretores/estudios e avaliacoes com persistencia em SQL Server.</p>
-    <div class="d-flex flex-wrap gap-2">
-        <a class="btn btn-primary" asp-controller="Obras" asp-action="Index">Ver obras</a>
-        <a class="btn btn-outline-primary" asp-controller="Consultas" asp-action="Index">Consultas</a>
-    </div>
-</div>
+<div class="container-fluid">
 
-<div class="row g-3">
-    <div class="col-md-4">
-        <div class="border rounded p-3 h-100">
-            <h2 class="h5">CRUDs</h2>
-            <p class="mb-0">Telas para obras, diretores/estudios, generos e avaliacoes.</p>
+    <!-- Banner Principal -->
+    <div class="card border-0 shadow-lg mb-5 overflow-hidden">
+
+        <div class="card-body text-white p-5"
+             style="background: linear-gradient(135deg, #0d6efd, #6610f2);">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-lg-8">
+
+                    <h1 class="display-4 fw-bold mb-3">
+                        O Melhor Acervo de Filmes e Animes!
+                    </h1>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <div style="font-size: 7rem;">
+                        
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+
     </div>
-    <div class="col-md-4">
-        <div class="border rounded p-3 h-100">
-            <h2 class="h5">Relacionamentos</h2>
-            <p class="mb-0">Uma obra pertence a um diretor/estudio, possui avaliacoes e pode ter varios generos.</p>
+
+    <!-- Recursos -->
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100 border-0">
+
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">📺 Animes</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-text">
+                        Gerencie animes, gêneros, diretores e estúdios,
+                        mantendo todas as informações organizadas e acessíveis.
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-transparent border-0">
+                    <a class="btn btn-primary w-100"
+                       asp-controller="Obras"
+                       asp-action="Index">
+                        Explorar
+                    </a>
+                </div>
+
+            </div>
+
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="border rounded p-3 h-100">
-            <h2 class="h5">Consultas</h2>
-            <p class="mb-0">Pagina dedicada a consultas LINQ com Include, GroupBy, Count, Average e filtro tipo Having.</p>
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100 border-0">
+
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">🎬 Cinema</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-text">
+                        Cadastre filmes e acompanhe avaliações,
+                        diretores, estúdios e múltiplos gêneros para cada obra.
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-transparent border-0">
+                    <a class="btn btn-success w-100"
+                       asp-controller="Obras"
+                       asp-action="Index">
+                        Explorar
+                    </a>
+                </div>
+
+            </div>
+
         </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100 border-0">
+
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">📊 Consultas</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-text">
+                        Execute consultas LINQ para análise de dados,
+                        estatísticas e visualização de informações do catálogo.
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-transparent border-0">
+                    <a class="btn btn-warning w-100"
+                       asp-controller="Consultas"
+                       asp-action="Index">
+                        Acessar
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
+
+    <!-- Rodapé Informativo -->
+    <div class="card shadow-sm border-0 mt-5">
+
+        <div class="card-body text-center">
+
+            <h5 class="text-primary">
+                🚀 Projeto Acadêmico
+            </h5>
+
+            <p class="mb-0 text-muted">
+                Aplicação desenvolvida com ASP.NET Core MVC, Entity Framework Core,
+                SQL Server e Bootstrap 5, seguindo o padrão arquitetural MVC.
+            </p>
+
+        </div>
+
+    </div>
+
 </div>

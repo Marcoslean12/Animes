@@ -16,15 +16,15 @@ public class ObraFormViewModel
     public TipoObra Tipo { get; set; }
 
     [Display(Name = "Ano de Lancamento")]
-    [Range(1900, 2100, ErrorMessage = "Informe um ano valido.")]
+    [Range(1900, 2026, ErrorMessage = "Informe um ano valido.")]
     public int AnoLancamento { get; set; }
 
     [Display(Name = "Duracao em minutos")]
-    [Range(1, 1000, ErrorMessage = "Informe uma duracao valida.")]
+    [Range(1, 228, ErrorMessage = "Informe uma duracao valida.")]
     public int DuracaoMinutos { get; set; }
 
     [Required(ErrorMessage = "Informe a sinopse.")]
-    [StringLength(1000)]
+    [StringLength(228)]
     public string Sinopse { get; set; } = string.Empty;
 
     [Display(Name = "Diretor/Estudio")]

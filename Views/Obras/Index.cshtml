@@ -4,39 +4,115 @@
     ViewData["Title"] = "Obras";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h1>Obras</h1>
-    <a class="btn btn-primary" asp-action="Create">Cadastrar obra</a>
-</div>
+<div class="card shadow border-0">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <div>
+            <h3 class="mb-0">🎬 Obras Cadastradas</h3>
+            <small>Gerenciamento de filmes, séries e animes</small>
+        </div>
 
-<table class="table table-striped align-middle">
-    <thead>
-        <tr>
-            <th>Titulo</th>
-            <th>Tipo</th>
-            <th>Ano</th>
-            <th>Diretor/Estudio</th>
-            <th>Generos</th>
-            <th>Media</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model)
-{
-        <tr>
-            <td>@item.Titulo</td>
-            <td>@item.Tipo</td>
-            <td>@item.AnoLancamento</td>
-            <td>@item.DiretorEstudio?.Nome</td>
-            <td>@string.Join(", ", item.ObraGeneros.Select(og => og.Genero?.Nome))</td>
-            <td>@(item.Avaliacoes.Any() ? item.Avaliacoes.Average(a => a.Nota).ToString("0.0") : "-")</td>
-            <td class="text-end">
-                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
-                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <a class="btn btn-light fw-bold" asp-action="Create">
+            ➕ Nova Obra
+        </a>
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>🎥 Título</th>
+                        <th>📺 Tipo</th>
+                        <th>📅 Ano</th>
+                        <th>🎬 Diretor/Estúdio</th>
+                        <th>🏷️ Gêneros</th>
+                        <th>⭐ Média</th>
+                        <th class="text-center">⚙️ Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var media = item.Avaliacoes.Any()
+                            ? item.Avaliacoes.Average(a => a.Nota)
+                            : 0;
+
+                        <tr>
+                            <td>
+                                <strong>@item.Titulo</strong>
+                            </td>
+
+                            <td>
+                                <span class="badge bg-info text-dark">
+                                    @item.Tipo
+                                </span>
+                            </td>
+
+                            <td>
+                                @item.AnoLancamento
+                            </td>
+
+                            <td>
+                                @item.DiretorEstudio?.Nome
+                            </td>
+
+                            <td>
+                                @string.Join(", ", item.ObraGeneros.Select(og => og.Genero?.Nome))
+                            </td>
+
+                            <td>
+                                @if (item.Avaliacoes.Any())
+                                {
+                                    <span class="badge bg-warning text-dark fs-6">
+                                        ⭐ @media.ToString("0.0")
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        Sem avaliações
+                                    </span>
+                                }
+                            </td>
+
+                            <td class="text-center">
+
+                                <div class="btn-group" role="group">
+
+                                    <a class="btn btn-sm btn-warning"
+                                       asp-action="Edit"
+                                       asp-route-id="@item.Id">
+                                        ✏️ Editar
+                                    </a>
+
+                                    <a class="btn btn-sm btn-info text-white"
+                                       asp-action="Details"
+                                       asp-route-id="@item.Id">
+                                        👁️ Detalhes
+                                    </a>
+
+                                    <a class="btn btn-sm btn-danger"
+                                       asp-action="Delete"
+                                       asp-route-id="@item.Id">
+                                        🗑️ Excluir
+                                    </a>
+
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+    <div class="card-footer text-muted text-center">
+        Total de obras: <strong>@Model.Count()</strong>
+    </div>
+</div>
